@@ -1,0 +1,4 @@
+*.sqlite
+.buildpath
+.project
+/.settings

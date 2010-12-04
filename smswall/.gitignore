@@ -1,0 +1,3 @@
+# Live data directory
+data/[^.dummy]
+/flash
