@@ -17,7 +17,8 @@ require_once('../simplepie/idn/idna_convert.class.php');
 // Dernier twit enregistré. Sert de référent
 $lastItem = $db->query("SELECT * FROM items ORDER BY timestamp DESC LIMIT 0, 1");
 $lastItemRow = $lastItem->fetch(PDO::FETCH_ASSOC);
-$oldTimestamp = (empty($lastItemRow['timestamp'])) ? $config['ctime'] : $lastItemRow['timestamp'];
+//$oldTimestamp = (empty($lastItemRow['timestamp'])) ? $config['ctime'] : $lastItemRow['timestamp'];
+$oldTimestamp = (empty($lastItemRow['timestamp'])) ? '1290441880' : $lastItemRow['timestamp'];
 
 // Initialisation du feed unique. Agrégat des différents flux RSS à parser
 $feed = new SimplePie();
@@ -37,7 +38,9 @@ $feed = new SimplePie();
 	$feedAry = array();
 	foreach($hashTagHash as $hash){
 		//$feedAry[] = 'http://search.twitter.com/search.rss?q=%23'.trim($hash);
-		$feedAry[] = 'http://search.twitter.com/search.rss?q=%23'.trim($hash).'&rpp=30';
+		//$feedAry[] = 'http://search.twitter.com/search.rss?q=%23'.trim($hash).'&rpp=30';
+		//$feedAry[] = 'http://bloggerluv.com/activity/feed/';
+		$feedAry[] = 'http://beta.ruche.org/calevent/index/pubrss';
 	}
 	$feed->set_feed_url($feedAry);
 
@@ -60,7 +63,7 @@ foreach($feed->get_items() as $item){
     $content = $isBlogpost ? utf8_decode($item->get_content()) : $item->get_content();
     
 	$enclosure = $item->get_enclosure();
-	$avatarUrl = $enclosure->get_link();
+	$avatarUrl = (!empty($enclosure)) ? $enclosure->get_link() : '';
     //$avatar = $isTwitter ? : '';
     
     
