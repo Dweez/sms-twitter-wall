@@ -7,9 +7,10 @@ $up_hashtag = $_POST['hashtag'];
 $up_modo_type = $_POST['modo_type'];
 $up_purge = $_POST['cbox'];
 $up_avatar = $_POST['avatar'];
+$up_theme = $_POST['theme'];
 
-if(!empty($up_hashtag) || !empty($up_modo_type) || !empty($up_purge) || !empty($up_avatar)){
-	
+if(!empty($up_hashtag) || !empty($up_modo_type) || !empty($up_purge) || !empty($up_avatar) || !empty($up_theme)){
+	// @todo Il y a y a moyen de factoriser toutes ces mises à jour
 	// Update de la chaine hashtag
 	if(!empty($up_hashtag)){
 		$sql = "UPDATE config_wall SET hashtag = ? WHERE id = 1;";
@@ -42,6 +43,12 @@ if(!empty($up_hashtag) || !empty($up_modo_type) || !empty($up_purge) || !empty($
 		$sql = "UPDATE config_wall SET mtime = ? WHERE id = 1;";
 		$q = $db->prepare($sql);
 		$q->execute(array(time()));
+	}
+	// Changement de thème
+	if(!empty($up_theme)){
+		$sql = "UPDATE config_wall SET theme = ? WHERE id = 1;";
+		$q = $db->prepare($sql);
+		$q->execute(array($up_theme));
 	}
 	// On reload la config toute fraiche. 
 	// Ne passe pas en deuxieme requete du update, dommage

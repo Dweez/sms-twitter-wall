@@ -61,13 +61,22 @@ include('../twitdate.php');
 			</select>
 		</form>
 		
-		<div class="title">Hashtag :</div>
+		<div class="title">Hashtag / RSS :</div>
 		<div class="subTitle">
 			Tags multiples : séparés par une virgule.<br/>
 			Le <strong>#</strong> est ajouté automatiquement.
 		</div>
 		<form action="update_config.php" method="post" style="">
 			<input type="text" name="hashtag" value="<?php echo $config['hashtag']; ?>" style="width: 100px;"/>
+			<input type="submit" value="OK" />
+		</form> 
+		
+		<div class="title">Thèmes :</div>
+		<div class="subTitle">
+			Le thème doit exister dans /themes/
+		</div>
+		<form action="update_config.php" method="post" style="">
+			<input type="text" name="theme" value="<?php echo $config['theme']; ?>" style="width: 100px;"/>
 			<input type="submit" value="OK" />
 		</form> 
 		

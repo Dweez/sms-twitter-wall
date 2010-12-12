@@ -21,15 +21,19 @@ foreach($ary_old as $old){
 
 	foreach($rowarray as $item){
 		
-		// Recup du pseudo
-		/*preg_match('@^(?:http://twitter.com/)?([^/]+)@i', $item->link, $matches);
-		$item->pseudo = $matches[1];*/
+		// reformattage à revoir
 		
-		$ary_url = explode("/", $item['link']);
-		// Traitement de certains champs 
-		if($ary_url[2]=="twitter.com"){
-			$item['pseudo'] = $ary_url[3];
-			$item['avatarbig'] = str_replace('_normal','',$item['avatar']);
+		$isUrl = filter_var($item['link'], FILTER_VALIDATE_URL);
+		if($isUrl){
+			$ary_url = explode("/", $isUrl);
+			if($ary_url[2]=="twitter.com"){
+				$item['pseudo'] = $ary_url[3];
+				//$item['twitdate'] = Timesince($item['timestamp'],'');
+				$item['twitdate'] = $item['timestamp'];
+			}else{
+				$item['pseudo'] = "RSS";
+				$item['title'] .= " - " . strip_tags(substr($item['description'],0,250));
+			}
 		}else{
 			if($item['link'] == "SMS"){
 				$item['pseudo'] = "SMS";

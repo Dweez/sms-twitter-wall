@@ -18,7 +18,7 @@ require_once('../simplepie/idn/idna_convert.class.php');
 $lastItem = $db->query("SELECT * FROM items ORDER BY timestamp DESC LIMIT 0, 1");
 $lastItemRow = $lastItem->fetch(PDO::FETCH_ASSOC);
 //$oldTimestamp = (empty($lastItemRow['timestamp'])) ? $config['ctime'] : $lastItemRow['timestamp'];
-$oldTimestamp = (empty($lastItemRow['timestamp'])) ? '1290441880' : $lastItemRow['timestamp'];
+$oldTimestamp = (empty($lastItemRow['timestamp'])) ? '' : $lastItemRow['timestamp'];
 
 // Initialisation du feed unique. Agrégat des différents flux RSS à parser
 $feed = new SimplePie();
@@ -40,7 +40,14 @@ $feed = new SimplePie();
 		//$feedAry[] = 'http://search.twitter.com/search.rss?q=%23'.trim($hash);
 		//$feedAry[] = 'http://search.twitter.com/search.rss?q=%23'.trim($hash).'&rpp=30';
 		//$feedAry[] = 'http://bloggerluv.com/activity/feed/';
-		$feedAry[] = 'http://beta.ruche.org/calevent/index/pubrss';
+		//$feedAry[] = 'http://beta.ruche.org/calevent/index/pubrss';
+		$isUrl = filter_var($hash, FILTER_VALIDATE_URL);
+		
+		if($isUrl){
+			$feedAry[] = trim($hash);
+		}else{
+			$feedAry[] = 'http://search.twitter.com/search.rss?q=%23'.trim($hash).'&rpp=30';
+		}
 	}
 	$feed->set_feed_url($feedAry);
 
@@ -60,7 +67,7 @@ foreach($feed->get_items() as $item){
     $isBlogpost = preg_match("/blogspot\.com/",$feedlink);
     $isTwitter = preg_match("/twitter\.com/",$feedlink);
     $title = $isBlogpost ? utf8_decode($item->get_title()) : $item->get_title();
-    $content = $isBlogpost ? utf8_decode($item->get_content()) : $item->get_content();
+    $content = $isBlogpost ? utf8_decode($item->get_content()) : substr($item->get_content(), 0, 250);
     
 	$enclosure = $item->get_enclosure();
 	$avatarUrl = (!empty($enclosure)) ? $enclosure->get_link() : '';
@@ -73,8 +80,10 @@ foreach($feed->get_items() as $item){
     $modo_type = $config['modo_type'];
     $etat_bulle = $config['bulle'];
     
+    //var_dump($timestamp);
+    
     // Insert si le timestamp de l'item est plus récent que $lastItemRow['timestamp']
-    if($timestamp > $oldTimestamp){
+    if($timestamp > $oldTimestamp || $oldTimestamp == ""){
     	$db->exec('INSERT INTO "items" VALUES(NULL,'.$db->quote($title).','.$db->quote($link).','.$db->quote($content).','.$timestamp.','.$modo_type.','.$etat_bulle.','.$db->quote($avatarUrl).');');
     	$ary_url = explode("/", $link);
     	$pseudo = $ary_url[3];

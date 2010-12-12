@@ -1,7 +1,14 @@
 <?php 
-
 require_once('smswall.inc.php');
-//include('twitdate.php');
+
+try {
+	$qconfig = $db->query("SELECT * FROM config_wall");
+	$config = $qconfig->fetch(PDO::FETCH_ASSOC);
+} catch(PDOException $e) {
+	echo $e->getMessage();
+}
+
+$theme = (!empty($config)) ? $config['theme'] : 'default';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +16,7 @@ require_once('smswall.inc.php');
 <meta name="generator" content="Bug" />
 <title>TwitWall</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="main.css" media="screen" rel="stylesheet" type="text/css" />
+<link href="themes/<?php echo $theme; ?>/main.css" media="screen" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="js/json2.min.js"></script>
 </head>
@@ -22,8 +29,8 @@ require_once('smswall.inc.php');
 	
 	
 	<div id="menu">
-		<img id="infos" src="media/infos.png" width="507" height="116" />
-		<img src="media/logo.png" width="188" height="116" style="margin: 20px 0 0 20px;" />
+		<span id="infos"></span>
+		<span id="logo"></span>
 	</div>
 	
 	<div id="wrapper">
@@ -31,7 +38,7 @@ require_once('smswall.inc.php');
 			<input id="last_ts" name="last_ts" type="text" style="width: 80px;" value="" />
 			<input id="aryOld" name="aryOld" type="text" style="width: 150px;" value=""/>
 		</div>
-		<div id="libres">
+		<div id="background">
 			
 		</div>
 		<div id="menuOmbre">
@@ -59,13 +66,8 @@ require_once('smswall.inc.php');
 		
 	</div>
 	<div id="footer">
-		<div id="zoneLogo">
-			<div style="width: 680px; margin: 0 auto; padding-top: 60px;">
-				<img src="media/logo_metro_nb.png" width="103" height="36" style="float: right; margin-top: 10px;" />
-				<img src="media/logo_rennes_nb.png" width="69" height="60" style="float: left;" />
-				<div style="width: 37px; margin: 0 auto;">
-					<img src="media/logo_bug_nb.png" width="37" height="61" />
-				</div>
+		<div id="ftContainer">
+			<div id="ftContent">
 			</div>
 		</div>
 	</div>

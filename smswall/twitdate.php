@@ -31,8 +31,8 @@ function Timesince($original,$delay) {
 		}
     }
 	
-    $pluriel = ($name != "mois") ? 's' : '';
-    $pluriel = ($name == "min" || $name == "sec") ? '' : '';
+    //$pluriel = ($name != "mois") ? 's' : '';
+    $pluriel = ($name == "min" || $name == "sec" || $name == "mois") ? '' : 's';
     $print = ($count == 1) ? '1 '.$name : "$count {$name}$pluriel";
 
 	
@@ -43,8 +43,8 @@ function Timesince($original,$delay) {
 	
 		// add second item if its greater than 0
 		if (($count2 = floor(($since - ($seconds * $count)) / $seconds2)) != 0) {
-			$pluriel2 = ($name2 != "mois") ? 's' : '';
-			$pluriel2 = ($name2 == "min" || $name2 == "sec") ? '' : '';
+			//$pluriel2 = ($name2 != "mois") ? 's' : '';
+			$pluriel2 = ($name2 == "min" || $name2 == "sec" || $name2 == "mois") ? '' : 's';
 		    $print .= ($count2 == 1) ? ', 1 '.$name2 : " $count2 {$name2}$pluriel2";
 		}
     }
