@@ -36,23 +36,24 @@ Installation :
 Posez les sources (le dossier /smswall) sur votre serveur. Vous pouvez le renommer comme bon vous semble. 
 Assurez-vous que le safe_mode n'est pas activé sur votre serveur.
 
-1 	Lancez le Register * en allant à l'adresse :  
+1 	- Lancez le Register (1) en allant à l'adresse :  
 
 		http://www.votredomaine.com/votredossier/admin/register.php
 
-2 	Dans un autre onglet (ou une autre fenêtre) lancez l'Admin ** du wall en vous rendant à cette adresse :
+2 	- Dans un autre onglet (ou une autre fenêtre) lancez l'Admin (2) du wall en vous rendant à cette adresse :
 
 		http://www.votredomaine.com/votredossier/admin
 
-3 	Vous pouvez enfin lancer le mur public dans une fenêtre, un autre onglet ou même un autre ordinateur en vous rendant à la racine de votre mur :
+3 	- Vous pouvez enfin lancer le mur public dans une fenêtre, un autre onglet ou même un autre ordinateur en vous rendant à la racine de votre mur :
 
 		http://www.votredomaine.com/votredossier
 	
-* Le Register est en charge de la création de la base de données et de la captation des messages :
+(1) Le Register est en charge de la création de la base de données et de la captation des messages :
 Vous devez impérativement laisser le Register ouvert durant toute la durée de la session. 
 Lancez le dans un onglet de votre navigateur que vous garderez donc ouvert. 
 
-** L'Admin vous permet de gérer votre wall :
+(2) L'Admin vous permet de gérer votre wall :
+
 -	Modération : A posteriori (par défaut) / A priori
 -	Hashtag / RSS : Paramètres de recherche. Vous pouvez y saisir plusieurs hashtag Twitter ainsi qu'un flux RSS en les séparant par des virgules
 -	Thèmes : voir rubrique associée
