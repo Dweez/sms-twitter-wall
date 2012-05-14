@@ -6,7 +6,7 @@ include('twitdate.php');
 $qconfig = $db->query("SELECT * FROM config_wall");
 $config = $qconfig->fetch(PDO::FETCH_ASSOC);
 $ary_config = array('avatar'=>$config['avatar']);
-$ary_old = (array) json_decode(stripslashes($_GET['aryOld']));
+$ary_old = (array) json_decode(stripslashes($_POST['aryOld']));
 $spe_old = array();
 foreach($ary_old as $old){
 	$spe_old[$old->id] = $old->etat;

@@ -97,7 +97,7 @@ $(document).ready(function() {
 		var etatBulle;
 		var idBulle;
 		
-		$.getJSON('getmessages.php', { aryOld: $('#aryOld').val() }, function(data) {
+		$.post('getmessages.php', { aryOld: $('#aryOld').val() }, function(data) {
 
 			// Parsing du JSon
 			$('#containerMsg').empty();
