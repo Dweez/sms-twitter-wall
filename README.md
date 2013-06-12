@@ -2,10 +2,10 @@ SMS-Twitter Wall Factory
 ================================
 
 __ATTENTION__
-	
-	- Ce dépot est en cours de mise en place !
-	- Les données ne sont pas protégées !  
-	Prenez les mesures qui s'imposent pour bloquer l'accès au dossier d'installation
+
+	Le SMS-Twitter Wall s'appuie sur une version désormais obsolète de l'API de Twitter. 
+	Il n'est officiellement plus fonctionnel depuis le 11 juin 2013.
+
 	
 Plus d'infos :
 --------------
@@ -76,6 +76,12 @@ Infos techniques :
 - SMS Enabler
 - jQuery
 - SimplePie
+
+__ATTENTION__
+	
+	- Les données ne sont pas protégées !  
+	Prenez les mesures qui s'imposent pour bloquer l'accès au dossier d'installation
+
 
 Licence :
 ---------

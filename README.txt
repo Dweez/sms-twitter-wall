@@ -2,10 +2,10 @@ SMS-Twitter Wall Factory
 ================================
 
 __ATTENTION__
-	
-	- Ce dépot est en cours de mise en place !
-	- Les données ne sont pas protégées !  
-	Prenez les mesures qui s'imposent pour bloquer l'accès au dossier d'installation
+
+	Le SMS-Twitter Wall s'appuie sur une version désormais obsolète de l'API de Twitter. 
+	Il n'est officiellement plus fonctionnel depuis le 11 juin 2013.
+
 	
 Plus d'infos :
 --------------
@@ -77,11 +77,17 @@ Infos techniques :
 - jQuery
 - SimplePie
 
+__ATTENTION__
+	
+	- Les données ne sont pas protégées !  
+	Prenez les mesures qui s'imposent pour bloquer l'accès au dossier d'installation
+
+
 Licence :
 ---------
 
-Auteurs : @Hugobiwan, @dweez & @aristofor
-Licence : AGPL3 - http://www.gnu.org/licenses/agpl.txt
+*  Auteurs : [@Hugobiwan](https://twitter.com/#!/Hugobiwan), [@dweez](https://twitter.com/#!/dweez) & [@aristofor](https://twitter.com/#!/aristofor)  
+*  Licence : [AGPL3](http://www.gnu.org/licenses/agpl.txt)
 
 Ce programme est un logiciel libre : vous pouvez le redistribuer ou
 le modifier selon les termes de la GNU General Public Licence tels
