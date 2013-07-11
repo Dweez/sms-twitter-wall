@@ -7,4 +7,4 @@ __ATTENTION__
 	Il n'est officiellement plus fonctionnel depuis le 11 juin 2013.
 
 	update 11/07/13: Une nouvelle version compatible avec l'API 1.1 de Twitter est
-	disponible sur [le dépôt de l'Association BUG](https://github.com/assobug/smswall)
+	disponible sur le Github de l'Association BUG : <https://github.com/assobug/smswall>
